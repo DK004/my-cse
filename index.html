@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!--To Avoid Page Inspect and Souse Code View-->
+     
+        <!--  -->
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Loding Error page-->
+        <!-- animation -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+        <!-- Bootstrap CSS -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+            crossorigin="anonymous"
+        >
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="fireanimation.css">
+        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="footer.css">
+        <title>Welcome to mycse</title>
+    </head>
+    <body oncontextmenu="return false" onkeydown="return false;" onmousedown="return false;">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-dark" id="navbar">
+            <div class="container-fluid">
+                <a class="navbar-brand mx-4 " href="https://mycse.000webhostapp.com/" style="font-weight: 500; font-size: 1.5rem;">Computer Science</a>
+            </div>
+        </nav>
+        <!-- Top Animation Title -->
+        <!--<div class="top-text">
+            <div class="text">
+                <h2 class="fire">myCse</h2>
+            </div>
+            <svg>
+                <filter id="fire">
+                    <feTurbulence
+                        id="turbulence"
+                        baseFrequency="0.1 0.1"
+                        numOctaves="2"
+                        seed="3"
+                    >
+                        <animate
+                            attributeName="baseFrequency"
+                            dur="5s"
+                            values="0.1 0.1;0.12 0.2"
+                            repeatCount="indefinite"
+                        ></animate>
+                    </feTurbulence>
+                    <feDisplacementMap in="SourceGraphic" scale="25"></feDisplacementMap>
+                </filter>
+            </svg>
+        </div>-->
+        <!---->
+        <div class="heading container">
+            <div class="h1 text-center mt-4 " style="padding-bottom: 15px;color: dimgray; border-bottom: 4px solid #FF7C20;">Select Semester</div>
+        </div>
+        <div class="container-fluid" id="main">
+            <div class="fifth animate__animated animate__flipInX">
+                <div class="img">
+                    <a href="#" id="fifthSem">
+                        <img src="fifthimg.svg" alt="">
+                        <p>Fifth-Semester</p>
+                    </a>
+                </div>
+            </div>
+            <div class="sixth animate__animated animate__flipInX">
+                <div class="img">
+                    <a href="#" id="sixthSem">
+                        <img src="sixththimg.svg" alt="">
+                        <p>Sixth-Semester</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- footer -->
+        <footer class="container-fluid py-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="logo-part">
+                            <h2 class="h2">Computer Science & Engineeering</h2>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h4 class="h4">Developed By</h4>
+                        <ul>
+                            <li style="margin-top:30px;">Nilesh Rathod</li>
+                            <li>Arpit Alkari</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="copyright">
+                    <p class="copytext">mycse@copyright 2020-2021</p>
+                </div>
+            </div>
+        </footer>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+        <script src="script.js"></script>
+    </body>
+</html>

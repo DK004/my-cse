@@ -1,0 +1,119 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;   
+}
+
+.top-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    min-height: 35vh;
+    background: -webkit-linear-gradient(to left, #F09819, #FF512F);
+    background: linear-gradient(to left, #F09819, #FF512F);
+}
+
+.text {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    filter: url("#fire");
+}
+.text h2{
+    position: relative;
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+    font-size: 11em;
+    margin-top: -190px;
+    -webkit-box-reflect: below -55px linear-gradient(transparent, #0007);
+    text-shadow: 0 0 10px #FF512F,
+    0 0 40px #F09819,
+    0 0 80px #FF512F,
+    0 0 100px #FF512F,
+    0 0 200px #F09819;
+}
+
+svg {
+    width: 0;
+    height: 0;
+}
+
+@media (max-width: 1200px) {
+    .text h2{
+        font-size: 9.5em;
+        margin-top: -100px;
+        -webkit-box-reflect: below -40px linear-gradient(transparent, #0007);
+        text-shadow: 0 0 10px #FF512F,
+        0 0 40px #F09819,
+        0 0 60px #FF512F,
+        0 0 80px #FF512F,
+        0 0 100px #F09819;
+    }
+    .top-text {
+        min-height: 60vh;
+    }
+}
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .text h2{
+        font-size: 8.8em;
+        margin-top: -80px;
+        -webkit-box-reflect: below -40px linear-gradient(transparent, #0007);
+        text-shadow: 0 0 10px #FF512F,
+        0 0 20px #F09819,
+        0 0 30px #FF512F,
+        0 0 40px #FF512F,
+        0 0 50px #F09819;
+    }
+    .top-text {
+        min-height: 60vh;
+    }
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .text h2{
+        font-size: 8em;
+        -webkit-box-reflect: below -30px linear-gradient(transparent, #0007);
+        text-shadow: 0 0 10px #FF512F,
+        0 0 20px #F09819,
+        0 0 30px #FF512F,
+        0 0 40px #FF512F,
+        0 0 50px #F09819;
+    }
+    .top-text {
+        min-height: 50vh;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .text h2{
+        font-size: 6em;
+        margin-top: -60px;
+        -webkit-box-reflect: below -50px linear-gradient(transparent, #0007);
+        text-shadow: 0 0 10px #FF512F,
+        0 0 15px #F09819,
+        0 0 20px #FF512F,
+        0 0 25px #FF512F,
+        0 0 30px #F09819;
+    }
+    .top-text {
+        min-height: 50vh;
+    }
+}
+
+@media (max-width: 575.98px) { 
+    .text h2{
+        font-size: 5.6em;
+        margin-top: -80px;
+        -webkit-box-reflect: below -30px linear-gradient(transparent, #0007);
+        text-shadow: 0 0 10px #FF512F,
+        0 0 20px #F09819,
+        0 0 30px #FF512F,
+        0 0 40px #FF512F,
+        0 0 50px #F09819;
+    }
+    .top-text {
+        min-height: 26vh;
+    }
+ }  
