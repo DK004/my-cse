@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <script>
+            document.onkeydown = function (e) {
+                if (event.keyCode == 123) {return false;}
+                if (e.ctrlKey&&e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'i'.charCodeAt(0))) {
+                    return false; }
+                if (e.ctrlKey && e.shiftKey && (e.keyCode == 'C'.charCodeAt(0) || e.keyCode == 'c'.charCodeAt(0))) {
+                    return false; }
+                if (e.ctrlKey && e.shiftKey && (e.keyCode == 'J'.charCodeAt(0) || e.keyCode == 'j'.charCodeAt(0))) {
+                    return false; }
+                if (e.ctrlKey && (e.keyCode == 'U'.charCodeAt(0) || e.keyCode == 'u'.charCodeAt(0))) {
+                    return false; }
+                if (e.ctrlKey && (e.keyCode == 'S'.charCodeAt(0) || e.keyCode == 's'.charCodeAt(0))) {
+                    return false; }
+            }
+        </script>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="../css/back-code.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/agate.min.css">
+        <title>DBMS 6</title>
+    </head>
+    <body style="background: #f0eeee;" oncontextmenu="return false" onkeydown="return false;" onmousedown="return false;">
+        <div class="container">
+            <!-- put the link of previous page... -->
+            <button type="button" onclick="goBack()" class="btn btn-dark">Go Back</button>
+            <h4 class="p-title">Program code</h4>
+        </div>
+        <div class="container">
+            <!-- enter the code here (in code tag)dont give any extra spaces  -->
+            <div style="font-size: .9em;line-height: 1.5em;margin-bottom: 10px;">
+                <h6 style="color: red;">*
+                    <u>Please don't copy the code as it.</u>
+                </h6>
+                <div class="code-me">
+                    <p style="font-size: 16px;"><b>Prerequisite</b></p>
+                        <pre class="language-SQL">
+<code><span>mysql> CREATE DATABASE Practical6;</span>
+<span>mysql>  USE Practical6;</span>
+<span>mysql> CREATE TABLE EMPLOYEE(EmpNo INT, EName VARCHAR(10), DeptNo INT, Age INT, Desgination VARCHAR(10),JDate DATE, Salary INT, Gender CHAR(2), City VARCHAR(10), District VARCHAR(10), Country VARCHAR(10));</span>
+<span>mysql> INSERT INTO EMPLOYEE VALUES
+   -> (10,'Rajesh',1,48,'Manager','2017-08-11',50000,'M','AMARAVTI','MH','IND'),
+   -> (11,'Prathmesh',2,25,'Clerk','2011-09-05',15000,'M','PUNE','MH','IND'),
+   -> (13,'Leena',4,28,'Sale','2020-05-20',13000,'F','NAGPUR','MH','IND'),
+   -> (14,'Reeta',3,30,'Production','2019-02-25',30000,'F','MUMBAI','MP','IND'),
+   -> (15,'Raj',2,38,'Management','2010-05-22',10000,'M','MUMBAI','UP','IND'),
+   -> (16,'Sandeep',3,35,'Manager','2017-06-22',28000,'M','PUNE','MH','IND'),
+   -> (20,'Anuj',4,29,'Clerk','2019-06-03',11000,'M','NAGPUR','ML','IND');</span></code></pre>
+                </div><br>
+                <h6 style="margin-bottom: 15px;">*
+                    <u>Tasks to be performed</u> :
+                </h6>
+                <div class="code-me">
+                    <p><b>1.</b>Retrieve name in uppercase whose salary is below 15000 and live in Amravati.</p>
+                        <pre class="language-SQL">
+<code><span> mysql> SELECT UPPER(Ename) FROM employee WHERE (Salary>15000) AND (City="AMARAVTI");</span></code></pre>
+                </div>
+                <div class="code-me">
+                    <p><b>2.</b>Retrieve name in lower case and designation in uppercase whose salary is greater than 10000 and age is 22,25 or 30.</p>
+                        <pre class="language-SQL">
+<code><span> mysql> SELECT LOWER(EName),upper(Desgination) FROM employee WHERE (Salary>10000) AND age IN(20,25,30);</span></code></pre>
+                </div>
+                <div class="code-me">
+                    <p><b>3.</b>Find out length of designation of employee whose empno 20 and department no. 4</p>
+                        <pre class="language-SQL">
+<code><span> mysql> SELECT EName,LENGTH(Desgination) AS "Leghth" FROM employee WHERE (EmpNo=20) AND (DeptNo=4);</span></code></pre>
+                </div>
+                <div class="code-me">
+                    <p><b>4.</b>Find total salary of employee who live in Mumbai.</p>
+                        <pre class="language-SQL">
+<code><span> mysql> SELECT SUM(Salary) FROM employee WHERE city="MUMBAI";</span></code></pre>
+                </div>
+                <div class="code-me">
+                    <p><b>5.</b>Find average salary of employee whose age from 22 to 30.</p>
+                        <pre class="language-SQL">
+<code><span> mysql> SELECT AVG(Salary) FROM employee WHERE Age BETWEEN 21 AND 30;</span></code></pre>
+                </div>
+                <div class="code-me">
+                    <p><b>6.</b>Count no. of employee whose salary is below 15000 and live in Nagpur.</p>
+                        <pre class="language-SQL">
+<code><span> mysql> SELECT COUNT(*) AS "Emp Count" FROM employee where (Salary<15000) AND (City="NAGPUR");</span></code></pre>
+                </div>
+                <div class="code-me">
+                    <p><b>7.</b> Find maximum salary that live in Pune and designation as a manager.</p>
+                        <pre class="language-SQL">
+<code><span> mysql> SELECT MAX(Salary) FROM employee WHERE (City="PUNE") AND (Desgination="Manager");</span></code></pre>
+                </div>
+                <div class="code-me">
+                    <p><b>8.</b>Count no. of employee whose name starts with ‘p’ and having salary is greater than 5000 and less than 20000.</p>
+                        <pre class="language-SQL">
+<code><span> mysql> SELECT COUNT(*) AS "OUTPUT" FROM employee WHERE (EName like "P%") AND (Salary>5000 AND Salary<20000); </span></code></pre>
+                </div>
+                <div class="code-me">
+                    <p><b>9.</b>Find all data of employee whose salary is less than the average salary.</p>
+                        <pre class="language-SQL">
+<code><span> mysql> SELECT * FROM employee WHERE Salary < ALL(SELECT AVG(Salary) FROM EMPLOYEE);</span></code></pre>
+                </div>
+                <div class="code-me">
+                    <p><b>10.</b>Find employee id, name, age, city whose age is lowest among all employees.</p>
+                        <pre class="language-SQL">
+<code><span> mysql> SELECT EmpNo,EName,Age,City FROM EMPLOYEE WHERE Age=(SELECT MIN(Age) FROM EMPLOYEE);</span></code></pre>
+                </div>
+                <div class="code-me">
+                    <p><b>11.</b>Find employee id, department no., name, age, city, country and mobile no. whose age is largest among all employees and live in Pune.</p>
+                        <pre class="language-SQL">
+<code><span> mysql> SELECT EmpNo,DeptNo,EName,Age,City,Country FROM EMPLOYEE WHERE Age=(SELECT MAX(Age) FROM EMPLOYEE WHERE City="PUNE");</span></code></pre>
+                </div>
+            </div>
+            </div>
+            <br> <br> <br>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
+            <script>hljs.highlightAll();</script>
+            <script>
+                function goBack() {
+                    window.history.back();
+                }
+            </script>
+    </body>
+</html> 

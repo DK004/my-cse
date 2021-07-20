@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" >
+        <link rel="stylesheet" href="../css/back_button.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/agate.min.css">
+        <title>OS 6</title>
+    </head>
+    <body
+        style="background: #f0eeee;"
+        oncontextmenu="return false"
+        onkeydown="return false;"
+        onmousedown="return false;"
+    >
+        <div class="container">
+            <!-- put the link of previous page... -->
+            <button type="button" onclick="goBack()" class="btn btn-dark">Go Back</button>
+            <h4 class="p-title">
+                Program code
+            </h4>
+        </div>
+        <div class="container">
+            <!-- enter the code here (in code tag)dont give any extra spaces  -->
+            <p style="font-weight: 500;">As a input, pass the reference stream as 1,2,3,4,1,2,5,1,2,3,4,5 with frame size F=3 & F=4. Check the number of page fault for FIFO / LRU and analyze the behavior of the algorithm</p>
+            
+            <div style="font-size: .9em;line-height: 1.5em;margin-bottom: 10px;">
+                <h6 style="margin-bottom: 30px;color: red;">
+                    *
+                    <u><b>Note : Please don't copy program as it</b></u>:
+                </h6>
+                <div class="code-me">
+                   <pre>
+<code class="language-cpp">
+<span>#include&lt;bits/stdc++.h></span>
+<span>using namespace std;</span>
+
+<span>// Required Variables</span>
+<span>int n,nf;</span>
+<span>int page[50],temp[50];</span>
+<span>int hit=0;</span>
+<span>int fcnt=0;</span>
+
+<span>// init page frame</span>
+<span>void createPageFrame(){</span>
+    <span>fcnt=0;</span>
+    <span>for(int i=0;i&lt;nf;i++)</span>
+        <span>temp[i]=-1;</span>
+  <span>}</span>
+<span></span>
+<span>// check weather frame is present or not</span>
+<span>int isPageHit(int x){</span>
+    <span>hit=0;</span>
+    <span>for(int k=0;k<nf;k++){</span>
+        <span>if(temp[k]==x){</span>
+            <span>hit=1;</span>
+            <span>break;</span>
+        <span>}</span>
+    <span>}</span>
+    <span>return hit;</span>
+  <span>}</span>
+<span>
+<span>// display fream page</span>
+<span>void displayPage(){</span>
+    <span>for(int i=0;i&lt;nf;i++){</span>
+    <span>if(temp[i]!=-1)</span>
+        <span>cout<&lt;temp[i]<<" ";</span>
+    <span>}</span>
+  <span>}</span>
+<span></span>
+<span>// dispalay no of page fault count</span>
+<span>void displayPageFaultCount(){</span>
+    <span>cout<<"\n\n\t\t -----> Page Fault Count : "<&lt;fcnt;</span>
+  <span>}</span>
+<span></span>
+<span>void FIFO(){</span>
+    <span>// init page frame (function call)</span>
+    <span>createPageFrame();</span>
+    <span></span>
+    <span>for(int i=0;i&lt;n;i++) {</span>
+        <span>int k;</span>
+        <span>cout<<"\n\t\tFor Page "<&lt;page[i]<<" : ";</span>
+        <span></span>
+        <span>// check for page already available or not</span>
+        <span>if(isPageHit(page[i])==0){</span>
+            <span>// create palce for new page frame</span>
+            <span>for(k=0;k&lt;nf-1;k++){</span>
+                <span>temp[k]=temp[k+1];</span>
+              <span>}</span>
+            <span>// set a page into frame</span>
+            <span>temp[k]=page[i];</span>
+            <span>// increment page count</span>
+            <span>fcnt++;</span>
+            <span>// display current page frame (function call)</span>
+            <span>displayPage();</span>
+          <span>}</span>
+        <span>// else -> page already in frame</span>
+        <span>else{</span>
+            <span>cout<<"No Page fault !!!";</span>
+          <span>}</span>
+      <span>}</span>
+    <span>// display page fault count (function call)</span>
+    <span>displayPageFaultCount();</span>
+  <span>}</span>
+<span></span>
+<span>void LRU(){</span>
+    <span>// init page frame (function call)</span>
+    <span>createPageFrame();</span>
+    <span>int least[50];</span>
+    <span></span>
+    <span>for(int i=0;i&lt;n;i++){</span>
+        <span>cout<<"\n\t\tFor Page "<&lt;page[i]<<" : ";</span>
+        <span>// check for page already available or not</span>
+        <span>if(isPageHit(page[i])==0){</span>
+            <span>for(int j=0;j&lt;nf;j++){</span>
+                <span>int pg=temp[j];</span>
+                <span>int flag=0;</span>
+                <span>// check for least page</span>
+                <span>for(int k=i-1;k>=0;k--){</span>
+                        <span>if(pg==page[k]){</span>
+                            <span>least[j]=k;</span>
+                            <span>flag=1;</span>
+                            <span>break;</span>
+                          <span>}</span>
+                        <span>else</span>
+                            <span>flag=0;</span>
+                  <span>}</span>
+                <span>if(!flag)</span>
+                    <span>least[j]=-1;</span>
+              <span>}</span>
+            <span>int min=0;</span>
+            <span>int index;</span>
+            <span>// check with minimume page fream</span>
+            <span>for(int j=0;j&lt;nf;j++){</span>
+                <span>if(least[j]&lt;min){</span>
+                    <span>min=least[j];</span>
+                    <span>index=j;</span>
+                  <span>}</span>
+              <span>}</span>
+            <span>// adding page into frame</span>
+            <span>temp[index] = page[i];</span>
+            <span>// increment page count</span>
+            <span>fcnt++;</span>
+            <span>// display current page frame (function call)</span>
+            <span>displayPage();</span>
+          <span>}</span>
+        <span></span>
+        <span>// else -> page already in frame</span>
+        <span>else{</span>
+            <span>cout<<"No Page fault !!!";</span>
+          <span>}</span>
+    <span>}</span>
+    <span>// display page fault count (function call)</span>
+    <span>displayPageFaultCount();</span>
+  <span>}</span>
+
+<span>int main()</span>
+<span>{</span>
+    <span>cout<<"Enter the lenght of page stream :: ";</span>
+    <span>cin>>n;</span>
+    <span>cout<<"\nEnter the reference stream :: ";</span>
+    <span>for(int i=0;i&lt;n;i++)</span>
+       <span>cin>>page[i];</span>
+    <span>cout<<"\nEnter the no frames :: ";</span>
+    <span>cin>>nf;</span>
+	
+    <span>cout<<"\n\n\tFIFO Page Replacement Algorithm"<&lt;endl;</span>
+    <span>FIFO();</span>
+	
+    <span>cout<<"\n\n\tLRU Page Replacement Algorithm"<&lt;endl;</span>
+    <span>LRU();</span>
+
+    <span>return 0;</span>
+<span>}</span>
+</code></pre>
+            </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script>
+        <script>
+            function goBack() {
+                window.history.back();
+            }
+        </script>
+    </body>
+</html>

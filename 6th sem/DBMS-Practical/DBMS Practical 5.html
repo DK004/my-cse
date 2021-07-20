@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <script>
+            document.onkeydown = function (e) {
+                if (event.keyCode == 123) {return false;}
+                if (e.ctrlKey&&e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'i'.charCodeAt(0))) {
+                    return false; }
+                if (e.ctrlKey && e.shiftKey && (e.keyCode == 'C'.charCodeAt(0) || e.keyCode == 'c'.charCodeAt(0))) {
+                    return false; }
+                if (e.ctrlKey && e.shiftKey && (e.keyCode == 'J'.charCodeAt(0) || e.keyCode == 'j'.charCodeAt(0))) {
+                    return false; }
+                if (e.ctrlKey && (e.keyCode == 'U'.charCodeAt(0) || e.keyCode == 'u'.charCodeAt(0))) {
+                    return false; }
+                if (e.ctrlKey && (e.keyCode == 'S'.charCodeAt(0) || e.keyCode == 's'.charCodeAt(0))) {
+                    return false; }
+            }
+        </script>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="../css/back-code.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/agate.min.css">
+        <title>DBMS 5</title>
+    </head>
+    <body style="background: #f0eeee;" oncontextmenu="return false" onkeydown="return false;" onmousedown="return false;">
+        <div class="container">
+            <!-- put the link of previous page... -->
+            <button type="button" onclick="goBack()" class="btn btn-dark">Go Back</button>
+            <h4 class="p-title">Program code</h4>
+        </div>
+        <div class="container">
+            <!-- enter the code here (in code tag)dont give any extra spaces  -->
+            <div style="font-size: .9em;line-height: 1.5em;margin-bottom: 10px;">
+                <h6 style="color: red;">*
+                    <u>Please don't copy the code as it.</u>
+                </h6>
+                <div class="code-me">
+                    <p style="font-size: 16px;"><b>Prerequisite</b></p>
+                        <pre class="language-SQL">
+<code><span>mysql> CREATE DATABASE Practical5;</span>
+<span>mysql>  USE Practical5;</span>
+<span>mysql> CREATE TABLE EMPLOYEE(EmpNo INT, EName VARCHAR(10), DeptNo INT, Age INT, Desgination VARCHAR(10),JDate DATE, Salary INT, Gender CHAR(2), City VARCHAR(10), District VARCHAR(10), Country VARCHAR(10));</span>
+<span>mysql> INSERT INTO EMPLOYEE VALUES
+   -> (101,'Rajesh',1,48,'Manager','2017-08-11',50000,'M','AMT','MH','IND'),
+   -> (102,'Abhi',2,30,'Clerk','2011-09-05',15000,'M','PUNE','MH','IND'),
+   -> (103,'Leena',4,29,'Sale','2020-05-20',15000,'F','NGP','MH','IND'),
+   -> (104,'Reeta',3,30,'Production','2019-02-25',30000,'F','MUMBAI','MP','IND'),
+   -> (105,'Raj',2,38,'Management','2010-05-22',10000,'M','AKOLA','UP','IND'),
+   -> (106,'Sandeep',3,35,'Manager','2017-06-22',28000,'M','PUNE','MH','IND'),
+   -> (107,'Anuj',1,33,'Clerk','2019-06-03',11000,'M','NGP','ML','IND'),
+   -> (108,'Dhiraj',3,30,'Worker','2016-04-13',5000,'M','NGP','ML','IND'),
+   -> (109,'Anuja',2,33,'Sale','2020-03-28',4000,'F','THANE','UP','IND'),
+   -> (110,'Vikram',1,null,'Managemnet','2019-10-10',15000,'M','AMT','MH','IND');</span></code></pre>
+                </div><br>
+                <h6 style="margin-bottom: 15px;">*
+                    <u>Tasks to be performed</u> :
+                </h6>
+                <div class="code-me">
+                    <p><b>1.</b>Display employee ID, name, designation, salary and incremented salary which is incremented by 20% to those employee who having salary greater than 10000 and having post as clerk.</p>
+                        <pre class="language-SQL">
+<code><span> mysql> SELECT EmpNO,EName,Desgination,Salary,(Salary+Salary*0.2) AS 'INC Salary' FROM EMPLOYEE WHERE Salary>10000 AND Desgination='Clerk';</span></code></pre>
+                </div>
+                <div class="code-me">
+                    <p><b>2.</b>Calculate double salary of employee from EMPLOYEE who lives in pune.</p>
+                        <pre class="language-SQL">
+<code><span> mysql> SELECT Salary*2 AS 'Double Salary' FROM EMPLOYEE WHERE City ='Pune';</span></code></pre>
+                </div>
+                <div class="code-me">
+                    <p><b>3.</b>Find name of employee whose salary is not equal to 4000 and equal to 10000.</p>
+                        <pre class="language-SQL">
+<code><span> mysql> SELECT EName FROM EMPLOYEE WHERE Salary!=4000 AND Salary=10000;</span></code></pre>
+                </div>
+                <div class="code-me">
+                    <p><b>4.</b> Retrieve data of employee whose salary is less than 20000 and greater than 5000.</p>
+                        <pre class="language-SQL">
+<code><span> mysql> SELECT * FROM EMPLOYEE WHERE Salary&lt;20000 AND Salary>5000;</span></code></pre>
+                </div>
+                <div class="code-me">
+                    <p><b>5.</b>Retrieve data of employee whose salary is not greater than 7000 (including).</p>
+                        <pre class="language-SQL">
+<code><span> mysql> SELECT * FROM EMPLOYEE WHERE Salary<=7000;</span></code></pre>
+                </div>
+                <div class="code-me">
+                    <p><b>6.</b>Display employee ID, name, designation, salary whose salary is 4000, 5000, and 10,000.</p>
+                        <pre class="language-SQL">
+<code><span> mysql> SELECT EmpNO,EName,Desgination,Salary FROM EMPLOYEE WHERE Salary IN(4000,5000,10000);</span></code></pre>
+                </div>
+                <div class="code-me">
+                    <p><b>7.</b>Display all data of employee whose salary is not 30000 and 28000.</p>
+                        <pre class="language-SQL">
+<code><span> mysql> SELECT * FROM EMPLOYEE WHERE (Salary!=30000) AND (Salary!=28000);</span></code></pre>
+                </div>
+                <div class="code-me">
+                    <p><b>8.</b>Retrieve ID, name, age and salary whose age between 18 to 40.</p>
+                        <pre class="language-SQL">
+<code><span> mysql> SELECT EmpNo,EName,Age,Salary FROM EMPLOYEE WHERE Age BETWEEN 18 AND 40; </span></code></pre>
+                </div>
+                <div class="code-me">
+                    <p><b>9.</b>Retrieve ID, name, age and salary whose salary not between 15000 to 30000.</p>
+                        <pre class="language-SQL">
+<code><span> mysql> SELECT EmpNo,EName,Age,Salary FROM EMPLOYEE WHERE Salary NOT BETWEEN 15000 AND 30000;</span></code></pre>
+                </div>
+                <div class="code-me">
+                    <p><b>10.</b>Display data of employee whose name starts with ‘a’ and his city name ends with ‘e’.</p>
+                        <pre class="language-SQL">
+<code><span> mysql> SELECT * FROM EMPLOYEE WHERE (EName LIKE 'A%') AND (City LIKE '%E');</span></code></pre>
+                </div>
+                <div class="code-me">
+                    <p><b>11.</b>Display all data of employee whose name starts with ‘a’ and his district name not contain character ‘ra’.</p>
+                        <pre class="language-SQL">
+<code><span> mysql> SELECT * FROM EMPLOYEE WHERE (EName LIKE 'A%') AND (District NOT LIKE '%RA%');</span></code></pre>
+                </div>
+                <div class="code-me">
+                    <p><b>12.</b>Display employee data from employee table whose values are unknown.</p>
+                        <pre class="language-SQL">
+<code><span> mysql> SELECT * FROM EMPLOYEE WHERE Age is null;</span></code></pre>
+                </div>
+                <div class="code-me">
+                    <p><b>13.</b>Retrieve data of employee whose salary is greater than 7000 and designation as a clerk.</p>
+                        <pre class="language-SQL">
+<code><span> mysql> SELECT * FROM EMPLOYEE WHERE (Salary>7000) AND (Desgination='Clerk');</span></code></pre>
+                </div>
+                <div class="code-me">
+                    <p><b>14.</b>Retrieve employee name, designation and salary of employee, either their salary is greater than 10000 or designation as a clerk.</p>
+                        <pre class="language-SQL">
+<code><span> mysql> SELECT EName,Desgination,Salary FROM EMPLOYEE WHERE (Salary>10000) OR (Desgination='Clerk');</span></code></pre>
+                </div>
+                <div class="code-me">
+                    <p><b>15.</b>Retrieve data of employee whose salary is not greater than 9000.</p>
+                        <pre class="language-SQL">
+<code><span> mysql> SELECT * FROM EMPLOYEE WHERE Salary<9000;</span></code></pre>
+                </div>
+                <div class="code-me">
+                    <p><b>16.</b>Write a query to retrieve data as employee no, employee name, salary, city, and country from EMPLOYEE table that lives in Pune and Mumbai and age between 25 to 45.</p>
+                        <pre class="language-SQL">
+<code><span> mysql> SELECT EmpNo,EName,Salary,City,Country FROM EMPLOYEE WHERE (City='PUNE' OR City='MUMBAI') AND (Age BETWEEN 25 AND 45);</span></code></pre>
+                </div>
+            </div>
+            </div>
+            <br> <br> <br>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
+            <script>hljs.highlightAll();</script>
+            <script>
+                function goBack() {
+                    window.history.back();
+                }
+            </script>
+    </body>
+</html> 

@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" >
+        <link rel="stylesheet" href="../css/back_button.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/agate.min.css">
+        <title>OS 4</title>
+    </head>
+    <body
+        style="background: #f0eeee;"
+        oncontextmenu="return false"
+        onkeydown="return false;"
+        onmousedown="return false;"
+    >
+        <div class="container">
+            <!-- put the link of previous page... -->
+            <button type="button" onclick="goBack()" class="btn btn-dark">Go Back</button>
+            <h4 class="p-title">
+                Program code
+            </h4>
+        </div>
+        <div class="container">
+            <!-- enter the code here (in code tag)dont give any extra spaces  -->
+            <div style="font-size: .9em;line-height: 1.5em;margin-bottom: 10px;">
+                <h6 style="margin-bottom: 30px;color: red;">
+                    *
+                    <u><b>Note : Please don't copy program as it</b></u>:
+                </h6>
+                <div class="code-me">
+                   <pre>
+<code class="language-cpp">
+<span>#include&lt;bits/stdc++.h></span>
+<span>using namespace std;</span>
+
+<span>int main()</span>
+<span>{</span>
+    <span>int n=5,m=3;
+    <span>int alloc[n][m] = { {0,1,0}, {2,0,0}, {3,0,2}, {2,1,1}, {0,0,2} };</span>
+    <span>int max[n][m] = { {7,5,3}, {3,2,2}, {9,0,2}, {2,2,2}, {4,3,2} };</span>
+    <span>int avail[m] = {3,3,2};</span>
+    <span>int need[n][m];</span>
+    <span>int safe[n],done[n]={1,1,1,1,1};</span>
+    <span>int flag=0,count=0;</span>
+
+    <span>for(int i=0;i&lt;n;i++){	</span>
+        <span>for(int j=0;j&lt;m;j++){</span>
+            <span>need[i][j] = max[i][j] - alloc[i][j];</span>
+        <span>}</span>
+    <span>}</span>
+
+    <span>cout<<"\n Banker's Algorithm :-\n\n";</span>
+    <span>cout<<"\tGiven Process Table -\n";</span>
+    <span>cout<<"\t\tProcess  Allocation    Max \tNeed\n\t\t  ";</span>
+    <span>for(int i=0;i&lt;n;i++){</span>
+        <span>cout<&lt;"P"&lt;&lt;i&lt;&lt;"\t   ";</span>
+        <span>for(int j=0;j&lt;m;j++){</span>
+            <span>cout&lt;&lt;alloc[i][j]<<" ";</span>
+        <span>}</span>
+        <span>cout<<"     ";</span>
+        <span>for(int j=0;j&lt;m;j++){</span>
+            <span>cout&lt;&lt;max[i][j]<<" ";</span>
+        <span>}</span>
+        <span>cout<<"   ";</span>
+        <span>for(int j=0;j&lt;m;j++){</span>
+            <span>cout&lt;&lt;need[i][j]<<" ";</span>
+        <span>}</span>
+        <span>cout<<"\n\t\t  ";</span>
+    <span>}</span>
+    
+    <span>cout<<"\n\tExecution Process Table -";</span>
+    <span>cout<<"\n\t\tStep  Process  Avail-Resources";</span>
+    <span>for(int i=0;i&lt;&lt;n;i++){</span>
+        <span>for(int j=0;j&lt;n;j++){</span>
+            <span>if(done[j]){</span>
+                <span>flag=0;</span>
+                <span>for(int k=0;k&lt;m;k++){</span>
+                    <span>if(need[j][k]>avail[k]){</span>
+                        <span>flag=1;</span>
+                        <span>break;</span>
+                    <span>}</span>
+                <span>}</span>
+                <span>if(!flag){</span>
+                    <span>cout&lt;&lt;"\n\t\t  "&lt;&lt;count+1<<"\tP"&lt;&lt;j<<"\t  ";</span>
+                    <span>safe[count++] = j;</span>
+                    <span>for(int k=0;k&lt;m;k++){</span>
+                        <span>cout&lt;&lt;avail[k]<<" ";</span>
+                        <span>avail[k] += alloc[j][k];</span>
+                    <span>}</span>
+                    <span>done[j]=0; </span>
+                <span>}</span>
+            <span>}</span>
+        <span>}</span>
+    <span>}</span>
+
+    <span>cout<<"\n\n\tSafe Sequence Execution - \n\t\t";</span>
+    <span>for(int i=0;i&lt;n;i++){</span>
+        <span>cout"P"&lt;&lt;safe[i];</span>
+        <span>if(i==n-1)</span>
+            <span>continue;</span>
+        <span>cout&lt;&lt;" -> ";</span>
+    <span>}</span>
+
+    <span>return 0;</span>
+<span>}</span>
+</code></pre>
+            </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script>
+        <script>
+            function goBack() {
+                window.history.back();
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <script>
+            document.onkeydown = function (e) {
+                if (event.keyCode == 123) {return false;}
+                if (e.ctrlKey&&e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'i'.charCodeAt(0))) {
+                    return false; }
+                if (e.ctrlKey && e.shiftKey && (e.keyCode == 'C'.charCodeAt(0) || e.keyCode == 'c'.charCodeAt(0))) {
+                    return false; }
+                if (e.ctrlKey && e.shiftKey && (e.keyCode == 'J'.charCodeAt(0) || e.keyCode == 'j'.charCodeAt(0))) {
+                    return false; }
+                if (e.ctrlKey && (e.keyCode == 'U'.charCodeAt(0) || e.keyCode == 'u'.charCodeAt(0))) {
+                    return false; }
+                if (e.ctrlKey && (e.keyCode == 'S'.charCodeAt(0) || e.keyCode == 's'.charCodeAt(0))) {
+                    return false; }
+            }
+        </script>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="../css/back-code.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/agate.min.css">
+        <title>DBMS 4</title>
+    </head>
+    <body style="background: #f0eeee;" oncontextmenu="return false" onkeydown="return false;" onmousedown="return false;">
+        <div class="container">
+            <!-- put the link of previous page... -->
+            <button type="button" onclick="goBack()" class="btn btn-dark">Go Back</button>
+            <h4 class="p-title">Program code</h4>
+        </div>
+        <div class="container">
+            <!-- enter the code here (in code tag)dont give any extra spaces  -->
+            <div style="font-size: .9em;line-height: 1.5em;margin-bottom: 10px;">
+                <h6 style="color: red;">*
+                    <u>Please don't copy the code as it.</u>
+                </h6>
+                <div class="code-me">
+                    <p style="font-size: 16px;"><b>Prerequisite</b></p>
+                        <pre class="language-SQL">
+<code><span>mysql> CREATE DATABASE Practical4;</span>
+<span>mysql>  USE Practical4;</span>
+<span>mysql> CREATE TABLE EMPLOYEE(EmpNo INT, EName VARCHAR(10), DeptNo INT, Age INT, Desgination VARCHAR(10),JDate DATE, Salary INT, Gender CHAR(2), City VARCHAR(10), District VARCHAR(10), Country VARCHAR(10));</span>
+<span>mysql> INSERT INTO EMPLOYEE VALUES
+   -> (101,'Rajesh',1,35,'Manager','2017-08-11',50000,'M','AMT','MH','IND'),
+   -> (102,'Sanket',2,30,'Clerk','2011-09-05',5000,'M','NGP','MH','IND'),
+   -> (103,'Leena',4,29,'Sale','2020-05-20',11000,'F','PUNE','MH','IND'),
+   -> (104,'Reeta',3,30,'Production','2019-02-25',30000,'F','Mumbai','MP','IND'),
+   -> (105,'Raj',2,38,'Management','2010-05-22',10000,'M','Akola','UP','IND'),
+   -> (106,'Sandeep',3,35,'Manager','2017-06-22',50000,'M','AMT','MH','IND'),
+   -> (107,'Yash',1,33,'Clerk','2019-06-03',6000,'M','NGP','ML','IND');</span></code></pre>
+                </div><br>
+                <h6 style="margin-bottom: 15px;">*
+                    <u>Tasks to be performed</u> :
+                </h6>
+                <div class="code-me">
+                    <p><b>1.</b>Retrieve data from EMPLOYEE table with salary in descending order.</p>
+                        <pre class="language-SQL">
+<code><span> mysql> SELECT * FROM EMPLOYEE ORDER BY Salary DESC;</span></code></pre>
+                </div>
+                <div class="code-me">
+                    <p><b>2.</b>Display designation, minimum salary, maximum salary, average salary, salary sum of an employee of each designation.</p>
+                        <pre class="language-SQL">
+<code><span> mysql> SELECT Desgination,MIN(Salary),MAX(Salary),AVG(Salary),SUM(Salary) FROM EMPLOYEE GROUP BY Desgination;</span></code></pre>
+                </div>
+                <div class="code-me">
+                    <p><b>3.</b>Display employee name, dept no, total salary of each department with total salary is greater than 6000.</p>
+                        <pre class="language-SQL">
+<code><span> mysql> SELECT DeptNo,SUM(Salary) FROM EMPLOYEE GROUP BY DeptNo HAVING SUM(Salary)>60000;</span></code></pre>
+                </div>
+                <div class="code-me">
+                    <p><b>4.</b>Display how many employees are in the table.</p>
+                        <pre class="language-SQL">
+<code><span> mysql> SELECT COUNT(*) FROM EMPLOYEE;</span></code></pre>
+                </div>
+                <div class="code-me">
+                    <p><b>5.</b>Display average salary in descending order of each department where department salary between 5000 to 10000.</p>
+                        <pre class="language-SQL">
+<code><span> mysql> SELECT DeptNo,AVG(Salary)  FROM EMPLOYEE GROUP BY DeptNo HAVING AVG(Salary) BETWEEN 5000 and 10000 ORDER BY DeptNo DESC;</span></code></pre>
+                </div>
+                <div class="code-me">
+                    <p><b>6.</b>Find how many employees having same age.</p>
+                        <pre class="language-SQL">
+<code><span> mysql> SELECT Age,COUNT(*) "Same Age Count" FROM EMPLOYEE GROUP BY Age;</span></code></pre>
+                </div>
+                <div class="code-me">
+                    <p><b>7.</b>Find name, designation, emp no, whose joining before year 2013 and display them in their descending order of their DOJ.</p>
+                        <pre class="language-SQL">
+<code><span> mysql> SELECT EmpNo,EName,Desgination FROM EMPLOYEE WHERE JDate<'2013-01-01' ORDER BY JDate DESC;</span></code></pre>
+                </div>
+                <div class="code-me">
+                    <p><b>8.</b>Find how many employees from each city.</p>
+                        <pre class="language-SQL">
+<code><span> mysql> SELECT City,COUNT(*)"City Count" FROM EMPLOYEE GROUP BY City;</span></code></pre>
+                </div>
+            </div>
+            </div>
+            <br> <br> <br>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
+            <script>hljs.highlightAll();</script>
+            <script>
+                function goBack() {
+                    window.history.back();
+                }
+            </script>
+    </body>
+</html> 

@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" >
+        <link rel="stylesheet" href="../css/back_button.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/agate.min.css">
+        <title>OS 2</title>
+    </head>
+    <body
+        style="background: #f0eeee;"
+        oncontextmenu="return false"
+        onkeydown="return false;"
+        onmousedown="return false;"
+    >
+        <div class="container">
+            <!-- put the link of previous page... -->
+            <button type="button" onclick="goBack()" class="btn btn-dark">Go Back</button>
+            <h4 class="p-title">
+                Program code
+            </h4>
+        </div>
+        <div class="container">
+            <!-- enter the code here (in code tag)dont give any extra spaces  -->
+            <div class="task">
+                <h5>Task to Performed :</h5>
+                <table>
+                    <tr>
+                      <th>PID</th>
+                      <th>Arrival Time</th>
+                      <th>Burst Time</th>
+                    </tr>
+                    <tr>
+                      <td>P1</td>
+                      <td>2</td>
+                      <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>P2</td>
+                        <td>1</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td>P3</td>
+                        <td>2</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>P4</td>
+                        <td>3</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>P5</td>
+                        <td>2</td>
+                        <td>1</td>
+                    </tr>
+                </table>
+                <br><br>
+            </div>
+            <div style="font-size: .9em;line-height: 1.5em;margin-bottom: 10px;">
+                <h6 style="margin-bottom: 30px;color: red;">
+                    *
+                    <u><b>Note : Please don't copy program as it</b></u>:
+                </h6>
+                <div class="code-me">
+                   <pre>
+<code class="language-cpp">
+<span>#include&lt;bits/stdc++.h></span>
+<span>using namespace std;</span>
+
+<span>void sortByArrivalTime(int *arr, int n,int *burst,int *pro){</span>
+    <span>for(int i=0;i&lt;n;i++){ </span>
+        <span>for(int j=0;j&lt;n;j++){ </span>
+            <span>if(arr[i]&lt;arr[j] || (arr[i]==arr[j] && pro[i]>pro[j])){ </span>
+                <span>SWAP(pro[i],pro[j]); </span>
+                <span>SWAP(arr[i],arr[j]); </span>
+                <span>SWAP(burst[i],burst[j]); </span>
+              <span>}</span>
+            <span>}</span>
+        <span>}</span>
+    <span>}</span>
+
+<span>void sortByBrustTime(int *arr, int n,int *burst,int *pro){</span>
+    <span>int bt=0,min,k=2;</span>
+    <span>for(int i=1;i&lt;n;i++){</span>
+        <span>bt+=burst[i];</span>
+        <span>min=burst[k];</span>
+        <span>for(int j=k;j&lt;n;j++){</span>
+            <span>if((bt>=arr[j] && burst[j]&LT;min) || (burst[i]==burst[j] && pro[i]>pro[j])){</span> 
+                <span>SWAP(arr[k],arr[j]);</span>
+                <span>SWAP(burst[k],burst[j]);
+                <span>SWAP(pro[k],pro[j]);</span>
+            <span>}</span>
+        <span>}</span>
+        <span>k++;</span>
+       <span>}</span>
+    <span>}</span>
+
+<span>int main()</span>
+<span>{</span>
+    <span>int pro[10],arr[10],burst[10],start[10],end[10],tat[10],wt[10],rt[10];</span>
+    <span>int tot_wt=0,tot_tat=0,resp=0,tot_resp=0;</span>
+
+    <span>cout<<"Enter a no of process : ";</span>
+    <span>cin>>n;</span>
+
+    <span>for(int i=0;i&lt;n;i++) {</span>
+        <span>cout<<"Enter the Process Name, Arrival Time, Brust Time : ";</span>
+        <span>cin>>pro[i]; cin>>arr[i]; cin>>burst[i];</span>
+    <span>}	</span>
+
+    <span>sortByArrivalTime(arr,n,burst,pro);</span> 
+
+    <span>sortByBrustTime(arr,n,burst,pro);</span>    
+
+    <span>// waiting time for first process will be 0</span>
+    <span>wt[0] = 0;</span>
+    <span>rt[0] = 0;</span>
+    <span>for(int i=0;i&lt;n;i++) { </span>
+        <span>if(i==0) {</span>
+        <span>// at time t0 -> is any procee to arrived</span>
+            <span>start[i] = arr[i];</span>
+            <span>end[i] = burst[i];</span>
+            <span>tat[i] = burst[i];</span>
+        <span>}</span>
+        <span>else{</span>
+            <span>// create a procee in squence(Gantt Chart)</span>
+            <span>start[i] = end[i-1];</span>
+
+            <span>// calculating a response time</span>
+            <span>resp += burst[i-1];</span>
+            <span>rt[i] = resp - arr[i];</span>
+        <span>}</span>
+        <span>// calculating excution time</span>
+        <span>end[i] = start[i] + burst[i];</span>
+
+        <span>// calculating a trunaround time</span>
+        <span>tat[i] = end[i] - arr[i];</span>
+
+        <span>// calculating a waiting time</span>
+        <span>wt[i] = tat[i] - burst[i];
+    <span>}</span>
+
+    <span>cout<<"\n\n*******************************OUTPUT*************************************";</span>
+    <span>cout<<"\n\nGantt Chart : "<< endl;</span>
+    <span>for(int i=0;i&lt;n;i++) {</span>
+        <span>cout<&lt;"P"<&lt;pro[i];</span>
+            <span>if(i == n-1){</span>
+		<span>continue;</span>
+            <span>}</span>
+        <span>cout<<" -> ";</span>
+    <span>}</span>
+
+    <span>cout<<"\n\nPName ArrTime BrustTime Start  END   WaitTime  TAT \tRT"<< endl;</span>
+    <span>for(int i=0;i&lt;n;i++) {</span>
+        <span>cout<&lt;pro[i]<&lt;"\t"<&lt;arr[i]<&lt;"\t"<&lt;burst[i]<&lt;" \t"<&lt;start[i]<<"  \t"<&lt;end[i]<&lt;"\t"<&lt;wt[i]<<"\t"<&lt;tat[i]<&lt;"\t"<&lt;rt[i]<&lt;endl;</span>
+        <span>tot_wt += wt[i];</span>
+        <span>tot_tat += tat[i];</span>
+        <span>tot_resp += rt[i];</span>
+    <span>}</span>
+
+    <span>cout<<"\n\n*******************************AVG TIMING**********************************";</span>
+    <span>cout<<"\n\nAverage Waiting time : "<<(float)tot_wt/n<< endl;</span>
+    <span>cout<<"Average Turnaround Time : "<<(float)tot_tat/n<< endl;</span>
+    <span>cout<<"Average Response Time : "<<(float)tot_resp/n;</span>
+    <span>return 0;</span>
+<span>}</span>
+</code></pre>
+            </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script>
+        <script>
+            function goBack() {
+                window.history.back();
+            }
+        </script>
+    </body>
+</html>

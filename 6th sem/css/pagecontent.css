@@ -1,0 +1,106 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100%;
+    margin: 0;
+    display: block;
+    font-family: 'Roboto';
+    background-color: #f0eeee;
+}
+
+#main {
+    margin-top: 62px;
+    display: block;
+    height: 100%;
+}
+
+.container hr {
+    border-top: solid 6px orange;
+}
+
+.sub-title {
+    font-weight: 700;
+    color: #777777;
+    margin-bottom: 1.3rem;
+    padding-top: 1.5rem;
+}
+
+.sub-subtile {
+    font-weight: 600;
+    color: black;
+    font-size: 18px;
+}
+
+.list {
+    margin-top: 30px;
+}
+
+.list hr {
+    border-top: dotted 3px #cccccc;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.list .Pract-title h2 {
+    color: #333333;
+    font-weight: 600;
+}
+
+.list .Pract-aim {
+    color: #555555;
+    font-size: 15px;
+    margin-left: 15px;
+}
+
+.list .Pract-action {
+    margin-top: 20px;
+    display: flex;
+}
+
+.list .Pract-action .button {
+    padding: 10px;
+    font-size: 16px;
+    font-weight: 400;
+    color: white;
+    background: -webkit-linear-gradient(to left, #F09819, #FF512F);
+    background: linear-gradient(to left, #F09819, #FF512F);
+    text-align: center;
+    border-radius: 50px;
+    text-decoration: none;
+    border: none;
+    margin-left: 22px;
+}
+
+@media (max-width: 1200px) {
+    .sub-title {
+        font-size: calc(1.425rem + 2.1vw);
+        font-weight: 600;
+        color: #888888;
+    }
+    .sub-subtile {
+        font-size: calc(1.275rem + 0.3vw);
+    }
+    .list ul li h2 {
+        font-size: calc(1rem + 2vw);
+    }
+    .list .Pract-aim p {
+        font-size: calc(1rem + 1vw);
+    }
+}
+
+@media (max-width: 400px) { 
+    .list .Pract-action .button {
+        padding: 8px;
+        font-size: 16px;
+        border-radius: 30px;
+        margin-left: 10px;
+    }
+ }
+
