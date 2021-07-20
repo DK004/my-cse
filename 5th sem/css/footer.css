@@ -1,0 +1,99 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+footer {
+    color: white;
+    font-family: 'Roboto';
+    min-width: 100%;
+    margin-top: 60px;
+    background:  #454545;
+}
+
+footer h4 {
+    margin-bottom: 40px;
+    position: relative;
+}
+
+footer h4:after {
+    position: absolute;
+    content: "";
+    background: orange;
+    width: 88%;
+    height: 3px;
+    left: 0;
+    bottom: -20px;
+}
+footer ul li {
+    list-style: none;
+    display: block;
+    margin-top: 10px;
+}
+
+footer ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+footer a:hover {
+    text-decoration: none;
+    color: orange !important;
+}
+
+footer .logo-part {
+    height: 100%;
+    margin-bottom: 50px;
+    border-right: 4px solid orange;
+}
+
+footer .copyright .copytext {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 16px;    
+    font-weight: 400;
+}
+
+@media (max-width:767px) {
+    footer .logo-part {
+        border-right: none;
+    }
+    footer h4:after {
+        width: 50%;
+    }
+    footer ul {
+        margin-bottom: 60px;
+    }
+    footer .col-md-3 {
+        margin-left: 10px;
+    }
+    footer .col-md-3 h4 {
+        font-size: 20px;
+    }
+    footer .copyright .copytext{
+        margin-top: 0;
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    footer h4:after {
+        width: 60%;
+    }
+    footer ul {
+        margin-bottom: 60px;
+    }
+    footer .copyright .copytext{
+        margin-top: 0;
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 1200px) {
+    footer .logo-part h2 {
+        font-size: calc(1.225rem + 2vw);
+        padding: 10px;
+    }
+}

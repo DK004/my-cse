@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script>
+            document.onkeydown = function (e) {
+                if (event.keyCode == 123) {return false;}
+                if (e.ctrlKey&&e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'i'.charCodeAt(0))) {
+                    return false; }
+                if (e.ctrlKey && e.shiftKey && (e.keyCode == 'C'.charCodeAt(0) || e.keyCode == 'c'.charCodeAt(0))) {
+                    return false; }
+                if (e.ctrlKey && e.shiftKey && (e.keyCode == 'J'.charCodeAt(0) || e.keyCode == 'j'.charCodeAt(0))) {
+                    return false; }
+                if (e.ctrlKey && (e.keyCode == 'U'.charCodeAt(0) || e.keyCode == 'u'.charCodeAt(0))) {
+                    return false; }
+                if (e.ctrlKey && (e.keyCode == 'S'.charCodeAt(0) || e.keyCode == 's'.charCodeAt(0))) {
+                    return false; }
+            }
+        </script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>SS 6</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+        <link rel="stylesheet" href="../css/back_button.css">
+    </head>
+    <body
+        style="background: #f0eeee;"
+        oncontextmenu="return false"
+        onkeydown="return false;"
+        onmousedown="return false;"
+    >
+
+    <button type="button" onclick="goBack()" class="btn btn-dark">Go Back</button>
+    <script>
+    function goBack() {
+        window.history.back();
+    }
+    </script>
+
+        <hr>
+        #include< stdio.h>
+        <br>#include< string.h>
+        <br>int strp=0,stkp=0;
+        <br>char str[20],stack[20];
+        <br>void reduce()
+        <br>{
+        <br>    int i,stack_len;
+        <br>    char str1[]="E+E",str2[]="E*E";
+        <br>    stack_len=strlen(stack);
+        <br>    for(i=0;i< stack_len;i++)
+        <br>    {
+        <br>        if(stack[i]=='a'){
+        <br>            stack[i]='E';
+        <br>        }
+        <br>        if(stack[i]=='b'){
+        <br>            stack[i]='E';
+        <br>        }
+        <br>
+        <br>    }
+        <br>        if(strcmp(stack,str1)==0){
+        <br>            strcpy(stack,"E");
+        <br>            stkp-=2;
+        <br>        }
+        <br>        if(strcmp(stack,str2)==0){
+        <br>            strcpy(stack,"E");
+        <br>            stkp-=2;
+        <br>        }
+        <br>}
+        <br>void main()
+        <br>{
+        <br>    int len,i;
+        <br>    printf("Given Grammar is :\n\tE->E+E\n\tE->E*E\n\tE->a\n\tE->b");
+        <br>    printf("\nEnter the string :: ");
+        <br>    scanf("%s",str);
+        <br>    len=strlen(str);
+        <br>    stack[0]=str[0];
+        <br>    strp++;
+        <br>    stkp++;
+        <br>    for(i=0;i< len;i++)
+        <br>    {
+        <br>        reduce();
+        <br>        stack[stkp]=str[strp];
+        <br>        strp++;
+        <br>        stkp++;	
+        <br>    }
+        <br>    reduce();
+        <br>    if((stack[0]=='E') && (stack[1]=='\0')){
+        <br>        printf("\nString is Accepted");
+        <br>        printf("\nString %c",stack[0]);
+        <br>    }
+        <br>    else{
+        <br>        printf("\nString is Rejected");
+        <br>    }
+        <br>    }
+        <br><br><br>
+    </body>
+</html>

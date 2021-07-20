@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>myce | 5th sem</title>
+        <!--To Avoid Page Inspect and Souse Code View-->
+        <script>
+        document.onkeydown = function (e) {
+            if (event.keyCode == 123) { return false; }
+            if (e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'i'.charCodeAt(0))) {
+                return false;
+            }
+            if (e.ctrlKey && e.shiftKey && (e.keyCode == 'C'.charCodeAt(0) || e.keyCode == 'c'.charCodeAt(0))) {
+                return false;
+            }
+            if (e.ctrlKey && e.shiftKey && (e.keyCode == 'J'.charCodeAt(0) || e.keyCode == 'j'.charCodeAt(0))) {
+                return false;
+            }
+            if (e.ctrlKey && (e.keyCode == 'U'.charCodeAt(0) || e.keyCode == 'u'.charCodeAt(0))) {
+                return false;
+            }
+            if (e.ctrlKey && (e.keyCode == 'S'.charCodeAt(0) || e.keyCode == 's'.charCodeAt(0))) {
+                return false;
+            }
+        }
+        </script>
+        <!--  -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- 
+            CSS Files 
+        -->
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <link rel="stylesheet" type="text/css" href="css/navbar.css">
+        <link rel="stylesheet" type="text/css" href="css/footer.css">
+        <link rel="stylesheet" type="text/css" href="cs/load.css">
+        <!-- 
+            Bootstrap Files
+         -->
+        <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+            crossorigin="anonymous"
+        >
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <!-- 
+            End of Header Section
+         -->
+    </head>
+    <!-- 
+        Body Section
+     -->
+    <body
+        oncontextmenu="return false"
+        onkeydown="return false;"
+        onmousedown="return false;"
+        onload="laodfunction()"
+    >
+        <!-- 
+            Nav Bar Section
+         -->
+        <nav class="navbar navbar-dark navbar-expand-lg bg-dark fixed-top">
+            <a class="navbar-brand" href="#">mycse | 5th sem</a>
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav mg-auto">
+                    <li class="nav-item active ">
+                        <a class="nav-link" href="#">
+                            Dashboard
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item active dropdown">
+                        <a
+                            class="nav-link dropdown-toggle"
+                            href="#"
+                            id="navbarDropdownMenuLink"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                        >
+                            Practical
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="HTMLFiles/CSLAB.html">CS LAB</a>
+                            <a class="dropdown-item" href="HTMLFiles/SSLAB.html">SS LAB</a>
+                            <a class="dropdown-item" href="HTMLFiles/STLDLAB.html">STLD LAB</a>
+                            <a class="dropdown-item" href="HTMLFiles/FSDPLAB.html">FSDP</a>
+                        </div>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" id="changeSem">Change Semester</a>
+                    </li>
+                    <!-- Dark mode -->
+                    <!--<li class="nav-item nav-link" style="cursor: pointer;" >-->
+                    <!--    <input type="checkbox" class="checkbox" id="night">-->
+                    <!--        Night Mode-->
+                    <!--</li>-->
+                </ul>
+            </div>
+        </nav>
+        <!--  -->
+        <!-- 
+            Page Content Section
+         -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <span class="heading">
+                        <h2>Student Dashboard</h2>
+                    </span>
+                    <hr style="border-top: 6px solid orange;">
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="card">
+                        <a href="HTMLFiles/SSLAB.html">
+                            <img class="card-img-top" src="image/ss.gif">
+                        </a>
+                        <div class="card-body">
+                            <h2 class="card-title">System Software</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="card">
+                        <a href="HTMLFiles/STLDLAB.html">
+                            <img class="card-img-top" src="image/stld.gif">
+                        </a>
+                        <div class="card-body">
+                            <h2 class="card-title">SWITCHING THEORY & LOGIC DESIGN</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="card">
+                        <a href="HTMLFiles/CSLAB.html">
+                            <img class="card-img-top" src="image/cs.gif">
+                        </a>
+                        <div class="card-body">
+                            <h2 class="card-title">Communication Skill</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="card">
+                        <a href="HTMLFiles/FSDPLAB.html">
+                            <img class="card-img-top" src="image/fsdp.gif">
+                        </a>
+                        <div class="card-body">
+                            <h2 class="card-title">File Strucure and Data Processing</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="card">
+                        <a href="">
+                            <img class="card-img-top" src="image/dc.gif">
+                        </a>
+                        <div class="card-body">
+                            <h2 class="card-title">Data Communication</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--  -->
+        <!-- 
+            Footer Section
+        -->
+        <footer class="container-fluid py-4">
+            <div class="container">
+                <div class="row">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="logo-part">
+                                <h2>Computer Science & Engineeering</h2>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h4>Quick Links</h4>
+                                    <div class="row ">
+                                        <div class="col-md-6">
+                                            <ul>
+                                                <li>
+                                                    <a href="#">Home</a>
+                                                </li>
+                                                <li>
+                                                    <a href="HTMLFiles/CSLAB.html">CS Lab</a>
+                                                </li>
+                                                <li>
+                                                    <a href="HTMLFiles/SSLAB.html">SS Lab</a>
+                                                </li>
+                                                <li>
+                                                    <a href="HTMLFiles/STLDLAB.html">STLD Lab</a>
+                                                </li>
+                                                <li>
+                                                    <a href="HTMLFiles/FSDP.html">FSDP</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <h4>Developed By</h4>
+                            <ul>
+                                <li>Nilesh Rathod</li>
+                                <li>Arpit Alkari</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p class="copytext">mycse@copyright 2020-2021</p>
+            </div>
+            </div>
+        </footer>
+        <!--  -->
+        <div id="loader">
+            <div id="shadow"></div>
+            <div id="box"></div>
+        </div>
+        <!-- <script>
+        var preloader = document.getElementById('loader');
+        function laodfunction() {
+            preloader.style.display = 'none';
+        }
+        </script> -->
+        <script>
+            let changeSem = document.getElementById('changeSem');
+            changeSem.addEventListener('click', ()=>{
+                localStorage.clear()
+                window.location.href='https://mrnileshrathod.github.io/mycse/';
+            });
+        </script>
+        <!-- night mode JS-->
+        <!--<script>-->
+        <!--    const night = document.getElementById("night");-->
+        <!--    night.addEventListener('change',(e)=>{-->
+        <!--        document.body.classList.toggle("dark",e.target.checked);-->
+        <!--    });-->
+        <!--</script>-->
+    </body>
+</html>

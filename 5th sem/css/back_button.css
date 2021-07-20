@@ -1,0 +1,24 @@
+*{
+    margin: 0px;
+    padding: 7px;
+}
+button{
+    box-shadow: 2px 2px 3px rgba(90, 90, 90,0.7);
+    
+}
+
+img{
+    width: 100%;
+    height: auto;
+}
+
+.btn{
+    border:none;
+    border-radius: 20px;
+     background: -webkit-linear-gradient(to left, #F09819, #FF512F);
+    background: linear-gradient(to left, #F09819, #FF512F);
+}
+
+hr{
+    border-top: 4px solid orange;
+}

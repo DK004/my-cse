@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script>
+            document.onkeydown = function (e) {
+                if (event.keyCode == 123) {return false;}
+                if (e.ctrlKey&&e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'i'.charCodeAt(0))) {
+                    return false; }
+                if (e.ctrlKey && e.shiftKey && (e.keyCode == 'C'.charCodeAt(0) || e.keyCode == 'c'.charCodeAt(0))) {
+                    return false; }
+                if (e.ctrlKey && e.shiftKey && (e.keyCode == 'J'.charCodeAt(0) || e.keyCode == 'j'.charCodeAt(0))) {
+                    return false; }
+                if (e.ctrlKey && (e.keyCode == 'U'.charCodeAt(0) || e.keyCode == 'u'.charCodeAt(0))) {
+                    return false; }
+                if (e.ctrlKey && (e.keyCode == 'S'.charCodeAt(0) || e.keyCode == 's'.charCodeAt(0))) {
+                    return false; }
+            }
+        </script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>SS 3</title>
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+            integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+            crossorigin="anonymous"
+        >
+        <link rel="stylesheet" href="../css/back_button.css">
+    </head>
+    <body
+        style="background: #f0eeee;"
+        oncontextmenu="return false"
+        onkeydown="return false;"
+        onmousedown="return false;"
+    >
+    <button type="button" onclick="goBack()" class="btn btn-dark">Go Back</button>
+    <script>
+    function goBack() {
+        window.history.back();
+    }
+    </script>
+        <hr>
+        <br>#include< stdio.h>
+        <br>#include< string.h>
+        <br>void main()
+        <br>{
+        <br>    char S[20],L[20],R[20];
+        <br>    int lenS,lenL,i;
+        <br>    
+        <br>    printf("Enter the production of S-> ");
+        <br>    scanf("%s",S);
+        <br>    printf("Enter the production of L-> ");
+        <br>    scanf("%s",L);
+        <br>    
+        <br>    lenS=strlen(S);
+        <br>    lenL=strlen(L);
+        <br>    
+        <br>    for(i=0; i< lenS ;i++)
+        <br>    {
+        <br>        if(S[0]>=97 && S[0]<=123){			
+        <br>            R[0]=S[0];
+        <br>        }
+        <br>        if(S[0]==65){						//FIRST of S Second Rule
+        <br>            if(L[0]>=97 && L[0]<=123){		
+        <br>                R[0]=L[0];
+        <br>            }
+        <br>        }
+        <br>        if(S[i]==76){						//FOLLOW of L
+        <br>            R[1]=S[i+1];
+        <br>        }
+        <br>        if(S[i]==83)
+        <br>        {
+        <br>            R[2]=S[i+1];					//FOLLOW of S
+        <br>        }
+        <br>    }
+        <br>    printf("\nFRIST of S\t:: %c",R[0]);
+        <br>    
+        <br>    for(i=0;i< lenL;i++)
+        <br>    {
+        <br>        if(L[0]>=97 && L[0]<=123){			//FIRST of L First Rule
+        <br>            R[0]=L[0];
+        <br>        }
+        <br>        if(L[0]==65){						//FIRST of L Second Rule
+        <br>            if(S[0]>=97 && S[0]<=123){		
+        <br>                R[0]=S[0];
+        <br>            }
+        <br>        }
+        <br>        if(L[i]==76){						//FOLLOW of L
+        <br>            R[1]=L[i+1];
+        <br>        }
+        <br>        if(L[i]==83){						//FOLLOW of S
+        <br>            R[2]=L[i+1];
+        <br>        }
+        <br>    }
+        <br>    printf("\nFRIST of L\t:: %c",R[0]);
+        <br>    
+        <br>    if(R[2]=='\0')
+        <br>        printf("\nFOLLOW of S\t:: $");
+        <br>    else
+        <br>        printf("\nFOLLOW of S\t:: %c",R[2]);
+        <br>        
+        <br>    if(R[1]=='\0')
+        <br>        printf("\nFOLLOW of L\t:: $");
+        <br>    else
+        <br>        printf("\nFOLLOW of L\t:: %c",R[1]);
+        <br>}
+        <br><br><br>
+    </body>
+</html>

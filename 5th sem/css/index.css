@@ -1,0 +1,106 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+body {
+    font-family: 'Roboto';
+    background: #ECE9E6
+}
+
+.container {
+    margin-top: 70px;
+}
+
+.card{
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 5px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 10px;
+    transition: all .5s ease-in-out;
+}
+
+.card:hover{
+    transform: scale(.9) translateY(3px);
+}
+
+.card img {
+    width: 100%;
+    max-height: 230px;
+    object-fit: fill;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+.container .heading h2 {
+    font-weight: 700;
+    color: #777777;
+    margin-bottom: 1.3rem;
+    padding-top: 1.5rem;
+    text-transform: uppercase;
+}
+
+.container .card-body h2 {
+    font-size: 1.2em;
+    color: #777777;
+    text-transform: uppercase;
+}
+
+.bottom {
+    margin-top: 50px;
+}
+
+@media (max-width: 1200px) {
+    .container .heading h2 {
+        font-size: calc(1rem + 2vw);
+    }
+    .card img {
+        height: 250px;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .card img {
+        height: 210px;
+    }
+    .container .card-body h2 {
+        font-size: 20px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .card img {
+        height: 170px;
+    }
+    .container .card-body h2 {
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .card img {
+        height: 155px;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .card {
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 575.98px) { 
+    .card {
+        margin-bottom: 20px;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+ }  
